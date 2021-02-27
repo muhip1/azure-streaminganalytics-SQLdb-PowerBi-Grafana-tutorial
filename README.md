@@ -61,7 +61,7 @@ Next: Networking >
 
 Choose:
 
-*   Connectivity method: Public endpoint 
+*   Connectivity method: Public endpoint
 *   Allow Azure services and resources to access this server = yes
 *   Add current client IP address = yes
 
@@ -166,8 +166,16 @@ Enter the following value into the **Kafka producer on Ubuntu 20.04:**
 
 {"sensor\_id": 1,"ltime": 1613204245,"temp": 5.5,"status": 1}
 
+{"sensor\_id": 1,"ltime": 1614448017,"temp": 6.5,"status": 1}
+
+{"sensor\_id": 1,"ltime": 1614448093,"temp": 7.5,"status": 1}
+
+![](https://user-images.githubusercontent.com/51634515/109395423-90375780-792c-11eb-8d73-39a18d4ab445.png)
+
 Then run the following SQL statement: SELECT \* FROM \[dbo\].\[mymachine\];
 
 You should see the following results:
 
-![](https://user-images.githubusercontent.com/51634515/109395237-8b25d880-792b-11eb-9dae-98938937c0a4.png)
+![](https://user-images.githubusercontent.com/51634515/109395437-a2b19100-792c-11eb-9de7-084eea07af00.png)
+
+## Step 5
