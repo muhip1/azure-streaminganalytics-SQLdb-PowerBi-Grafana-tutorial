@@ -10,6 +10,8 @@ This tutorial is a simple step by step instruction to reach the following goals:
 **Prerequisite:**
 
 *   Successful completion of the following tutorial: [kafka-mirrormaker-azure-tutorial](https://github.com/Darwin1972/kafka-mirrormaker-azure-tutorial)
+*   Power BI Desktop on your on-prem client pc
+*   Grafana on your on-prem client pc
 
 ## Step 2
 
@@ -32,6 +34,11 @@ Create
 Select SQL databases / Resource type: Single database.
 
 Create
+
+Configure:
+
+*   Resource gropu: kafkamirrormaker
+*   Database name: myStreamingDB
 
 ![](https://user-images.githubusercontent.com/51634515/109394004-02a43980-7925-11eb-8714-7fa8f28ff6ca.png)
 
@@ -84,7 +91,7 @@ Go to resource
 
 ## Step 3
 
-**Create and configure Azure Streaming Analytics.**
+**Create and configure Azure Streaming Analytics:**
 
 ![](https://user-images.githubusercontent.com/51634515/109394381-02a53900-7927-11eb-9385-66c9a996d604.png)
 
@@ -150,7 +157,7 @@ Start
 
 ## Step 4
 
-**Validate streaming analytics job with SQL database query editor.**
+**Validate streaming analytics job with SQL database query editor:**
 
 ![](https://user-images.githubusercontent.com/51634515/109395070-b825bb80-792a-11eb-833b-9f72bca02530.png)
 
@@ -179,3 +186,109 @@ You should see the following results:
 ![](https://user-images.githubusercontent.com/51634515/109395437-a2b19100-792c-11eb-9de7-084eea07af00.png)
 
 ## Step 5
+
+**Get the data into Microsoft Power BI:**
+
+Go to Overview:
+
+![](https://user-images.githubusercontent.com/51634515/109398503-a863a280-793d-11eb-98ed-3d3866508a69.png)
+
+Copy the server name: mysqlsever1968.database.windows.net for later use.
+
+![](https://user-images.githubusercontent.com/51634515/109398540-cfba6f80-793d-11eb-8218-8ef92c1bc5f8.png)
+
+Start Power BI Desktop on your on-prem client pc.  
+
+Get data and choose "More.."
+
+![](https://user-images.githubusercontent.com/51634515/109398575-055f5880-793e-11eb-8628-51b32f0f7b27.png)
+
+Select Azure / Azure SQL database:
+
+![](https://user-images.githubusercontent.com/51634515/109398640-67b85900-793e-11eb-9642-dfd3b5c343c9.png)
+
+Connect
+
+Enter server name: mysqlsever1968.database.windows.net
+
+![](https://user-images.githubusercontent.com/51634515/109398668-83bbfa80-793e-11eb-8f98-02468fee0ec0.png)
+
+OK
+
+Select Database and enter user name (server admin login) and password from Step 2.
+
+![](https://user-images.githubusercontent.com/51634515/109398781-2c6a5a00-793f-11eb-834c-384e8b1f4617.png)
+
+Connect
+
+Expand the myStreamingDB and select mymachine table.. 
+
+![](https://user-images.githubusercontent.com/51634515/109398828-7f441180-793f-11eb-81ab-d486a6c4e3af.png)
+
+Load
+
+![](https://user-images.githubusercontent.com/51634515/109398874-b5819100-793f-11eb-932e-c63c5f779a8d.png)
+
+Select Data:
+
+![](https://user-images.githubusercontent.com/51634515/109398893-ca5e2480-793f-11eb-8c8c-f1287d77a6d1.png)
+
+## Step 6
+
+**Get the data into Grafana:**
+
+Login to Grafana and choose configuration / data sources:
+
+![](https://user-images.githubusercontent.com/51634515/109399102-165d9900-7941-11eb-8dae-21b5e0337faf.png)
+
+![](https://user-images.githubusercontent.com/51634515/109399126-355c2b00-7941-11eb-8dc6-b90e05652257.png)
+
+Search for Microsoft SQL Server:
+
+![](https://user-images.githubusercontent.com/51634515/109399140-4f960900-7941-11eb-87ae-49e7258fd10e.png)
+
+Select
+
+Configure:
+
+*   Name: AzureDB
+*   Host: mysqlsever1968.database.windows.net
+*   Database: myStreamingDB
+*   User and password
+*   Encrypt: true
+
+![](https://user-images.githubusercontent.com/51634515/109399312-6b4ddf00-7942-11eb-935b-702590275aac.png)
+
+Save & Test
+
+![](https://user-images.githubusercontent.com/51634515/109399324-7739a100-7942-11eb-80fd-758980cc2626.png)
+
+Select create / dashboard:
+
+![](https://user-images.githubusercontent.com/51634515/109399340-96383300-7942-11eb-83b4-e34b2e48675c.png)
+
+![](https://user-images.githubusercontent.com/51634515/109399358-abad5d00-7942-11eb-856b-9b71ec3ce8d6.png)
+
+Add new panel
+
+![](https://user-images.githubusercontent.com/51634515/109399380-cf70a300-7942-11eb-8168-786e40ab8d63.png)
+
+Select table as the visualization.
+
+Enter the following SQL statement: SELECT \* FROM \[dbo\].\[mymachine\] and change format as table:
+
+![](https://user-images.githubusercontent.com/51634515/109399472-50c83580-7943-11eb-8d95-0f96963fc7bf.png)
+
+![](https://user-images.githubusercontent.com/51634515/109399504-79e8c600-7943-11eb-9729-061c2062ea63.png)
+
+Save
+
+![](https://user-images.githubusercontent.com/51634515/109399522-9b49b200-7943-11eb-9bbe-02fde97f3d0e.png)
+
+Save
+
+![](https://user-images.githubusercontent.com/51634515/109399537-af8daf00-7943-11eb-99ca-b29af2e10a2c.png)
+
+Save dashboard:
+
+![](https://user-images.githubusercontent.com/51634515/109399544-bddbcb00-7943-11eb-9850-a4cc6614cb3b.png)
