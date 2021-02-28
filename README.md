@@ -5,6 +5,8 @@ This tutorial is a simple step by step instruction to reach the following goals:
 *   Configure Microsoft Azure Streaming Analytics with Azure SQL
 *   Get the data into Microsoft Power BI and Grafana
 
+Please note: This tutorial is only for dev / poc (proof of concept) environment and not for production environment.
+
 ## Step 1
 
 **Prerequisite:**
